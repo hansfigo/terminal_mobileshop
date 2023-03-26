@@ -41,7 +41,7 @@ class SellerMenuView {
           break;
         default:
           clearSreen();
-          print("invalid Input");
+          print("invalid Input\n");
       }
     } while (!isExit);
   }

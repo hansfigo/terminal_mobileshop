@@ -1,4 +1,5 @@
 import 'package:terminal_mobileshop/helper/clear_screen.dart';
+import 'package:terminal_mobileshop/models/cart.dart';
 import 'package:terminal_mobileshop/models/products.dart';
 import 'package:terminal_mobileshop/views/consumer_menu_view.dart';
 import 'package:terminal_mobileshop/views/main_menu.dart';
@@ -6,6 +7,8 @@ import 'package:terminal_mobileshop/views/seller_menu_view.dart';
 
 void main(List<String> arguments) {
   ProductList productList = ProductList();
+  CartList cartList = CartList();
+
   bool validInput = true;
   clearSreen();
 
@@ -16,7 +19,7 @@ void main(List<String> arguments) {
     switch (menu) {
       case "1":
         ConsumerMenuView consumerMenuView =
-            ConsumerMenuView(productList: productList);
+            ConsumerMenuView(productList: productList, cartList: cartList);
         consumerMenuView.displayConsumerMenu();
         break;
       case "2":
