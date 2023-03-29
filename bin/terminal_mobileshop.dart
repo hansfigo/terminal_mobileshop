@@ -9,6 +9,8 @@ void main(List<String> arguments) {
   ProductList productList = ProductList();
   CartList cartList = CartList();
 
+  productList.productList.add(Product("Spagetti", 5));
+
   bool validInput = true;
   clearSreen();
 

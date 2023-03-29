@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:terminal_mobileshop/controller/cart_controller.dart';
 import 'package:terminal_mobileshop/models/cart.dart';
 import 'package:terminal_mobileshop/models/products.dart';
 import '../controller/consumer_controller.dart';
@@ -11,8 +12,10 @@ class ConsumerMenuView {
   ConsumerMenuView({required this.productList, required this.cartList});
 
   void displayConsumerMenu() {
-    ConsumerController _consumerController = ConsumerController(productList: productList);
-
+    ConsumerController _consumerController =
+        ConsumerController(productList: productList, cartList: cartList);
+    CartController _cartController =
+        CartController(cartList: cartList, productList: productList);
     bool isExit = false;
 
     clearSreen();
@@ -31,13 +34,10 @@ class ConsumerMenuView {
           _consumerController.showProduct();
           break;
         case "2":
-          // _consumerController.addProduct();
+          _cartController.displayCartMenu();
           break;
         case "3":
-          // _consumerController.deleteProduct();
           isExit = true;
-          break;
-        case "4":
           break;
         default:
           clearSreen();

@@ -1,13 +1,21 @@
 import 'dart:io';
 
+import 'package:terminal_mobileshop/controller/cart_controller.dart';
+
 import '../helper/clear_screen.dart';
+import '../models/cart.dart';
 import '../models/products.dart';
 
 class ConsumerController {
-  ProductList productList;
+  final ProductList productList;
+  final CartList cartList;
 
-  ConsumerController({required this.productList});
+  ConsumerController({required this.productList, required this.cartList});
+
   void showProduct() {
+    CartController _cartController =
+        CartController(cartList: cartList, productList: productList);
+
     if (productList.productList.isNotEmpty) {
       print("Product List : ");
       int i = 1;
@@ -20,13 +28,18 @@ class ConsumerController {
       print("There is no Product :(\n");
     }
 
-    print("\n\nPress Enter to go back...");
+    print("\n\nPress c to add item to cart");
+    print("Press q to go back...");
 
-    stdin.readLineSync();
-    clearSreen();
+    String input = stdin.readLineSync()!;
+
+    if (input == "c") {
+      _cartController.addCartItem();
+    } else if (input == "q") {
+      clearSreen();
+    }else{
+      clearSreen();
+      print("\nInvalid Input");
+    }
   }
-
-  void showCartList() {}
-
-  void addCartList() {}
 }
